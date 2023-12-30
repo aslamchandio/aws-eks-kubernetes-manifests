@@ -1,0 +1,18 @@
+apiVersion: v1 
+kind: Service
+metadata: 
+  name: deployment-nlb-service
+  labels:
+    app: deployment-nlb-service
+  annotations:  
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb    # To create Network Load Balancer     
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: first-deployment
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+    
